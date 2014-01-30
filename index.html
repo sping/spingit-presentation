@@ -52,7 +52,7 @@
         </section>
 
         <section data-transition="fade" data-background="#4d7e65" data-background-transition="fade">
-          <h1>Spingit</h1>
+          <h1>Spin<code>git</code></h1>
           <h3>for wizards on steroids</h3>
         </section>
 
@@ -101,7 +101,7 @@
 
         <section>
           <h2>Feature branches</h2>
-          <p>Nieuwe code die als het af is naar de <em>develop/sprint</em> branch</p>
+          <p>Nieuwe code die als het af is naar de <em>develop/sprint</em> branch gaat</p>
 
           <ul>
             <li><code>nieuwe-feature</code></li>
@@ -123,8 +123,7 @@
         <section>
           <h2>Highlights Gitflow</h2>
           <ol class="fragments">
-            <li class="fragment">Indeling branches</li>
-            <li class="fragment">Naamgeving branches</li>
+            <li class="fragment">Structuur branches</li>
             <li class="fragment">Hotfixes</li>
             <li class="fragment">Taging</li>
           </ol>
@@ -135,52 +134,88 @@
           <ol class="fragments">
             <li class="fragment">master = productie</li>
             <li class="fragment">master is altijd releasebaar</li>
-            <li class="fragment">Pull requests/code review</li>
+            <li class="fragment">Pull Requests</li>
           </ol>
         </section>
 
         <section>
           <h2>Start situatie</h2>
           <p>
-            TODO: image
-            master = production
-            staging = staging
-            develop = sprint
-            feature/story-name
-            feature/another-story-name
+            <code>master</code><br />
+            wat er nu in productie staat
+          </p>
+          <p>
+            <br />
+            <code>staging</code><br />
+            wat er nu in de acceptatie omgeving staat
+          </p>
+          <p>
+            <br />
+            <code>develop</code><br />
+            alle afgeronde features voor een volgende release
+          </p>
+          <p>
+            <br />
+            <code>feature/manage-users-for-backend</code><br />
+            een nieuwe feature waarin gewerkt wordt
+          </p>
+        </section>
+
+        <section data-transition="zoom">
+          <h2><small>#1</small> <strike>Branches</strike> solved</h2>
+        </section>
+
+        <section data-transition="fade">
+          <h2><small>#2</small> Eenduidige manier van werken</h2>
+        </section>
+
+        <section>
+          <h2>Flows</h2>
+          <ol style="min-width: 500px;">
+            <li class="fragment">feature &rarr; develop</li>
+            <li class="fragment">develop &rarr; staging &rarr; master</li>
+            <li class="fragment">hotfix</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>1. feature &rarr; develop</h2>
+          <p>
+            <img src="assets/feature-develop.png" style="max-height: 80%;" />
           </p>
         </section>
 
         <section>
-          <h2>Flow van feature naar develop</h2>
-          <p>
-            working in feature. commit commit commit
-          </p>
-          <p>
-            feature --> develop
-          </p>
-        </section>
-
-        <section>
-          <h2>develop naar staging</h2>
+          <h2>1. feature &rarr; develop</h2>
           <pre><code class="ruby">
+$ git checkout -b feature/admin-login develop
+# work work work, commit commit commit, FINISHED
+$ git push origin feature/admin-login
+# create pull request ... ?
+          </code></pre>
+          <p class="fragment">we komen zo terug op pull requests</p>
+        </section>
+
+        <section>
+          <h2>2. develop &rarr; staging &rarr; master</h2>
+          <img src="assets/develop-staging-master.png" />
+        </section>
+
+        <section>
+          <h2>2. develop &rarr; staging &rarr; master</h2>
+          <pre><code class="ruby">
+# develop --> staging
 $ git checkout staging
-$ git pull origin staging
 $ git merge develop
 $ git push origin staging
 # deploy...
           </code></pre>
-        </section>
-
-        <section>
-          <h2>staging naar production</h2>
           <pre><code class="ruby">
+# staging --> master
 $ git checkout master
-$ git pull origin master
 $ git merge staging
 $ git push origin master
 # deploy...
-# all went well?
 # create new version tag 1.1
 $ git tag -a 1.1
 $ git push origin 1.1
@@ -194,316 +229,124 @@ $ git push origin 1.1
         </section>
 
         <section>
-          <h2>Hotfix flow</h2>
+          <h2>3. Hotfix flow</h2>
+          <img src="assets/hotfix.png" style="max-height: 80%;" />
+        </section>
+
+        <section>
+          <h2>3. Hotfix flow</h2>
           <pre><code class="ruby">
 # create hotfix branch from master
 $ git checkout -b hotfix/bsod-fix master
 # fix, fix, commit, commit
-$ git checkout master
-$ git merge --no-ff hotfix/bsod-fix
-$ git push origin master
-# deploy...
+$ git push origin hotfix/bsod-fix
+# pull request
 
+# after merge
+$ git checkout master
+$ git pull origin master
 # create new version tag 1.1.1
 $ git tag -a 1.1.1
 $ git push origin 1.1.1
 
-# also include hotfix in develop
 $ git checkout develop
-$ git merge --no-ff hotfix/bsod-fix
+$ git merge master
 # repeat above 2 commands for staging
           </code></pre>
         </section>
 
-        <!-- Example of nested vertical slides -->
         <section>
-          <section>
-            <h2>Vertical Slides</h2>
-            <p>
-              Slides can be nested inside of other slides,
-              try pressing <a href="#" class="navigate-down">down</a>.
-            </p>
-            <a href="#" class="image navigate-down">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 1</h2>
-            <p>Press down or up to navigate.</p>
-          </section>
-          <section>
-            <h2>Basement Level 2</h2>
-            <p>Cornify</p>
-            <a class="test" href="http://cornify.com">
-              <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 3</h2>
-            <p>That's it, time to go back up.</p>
-            <a href="#/2" class="image">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-            </a>
-          </section>
+          <h2>Complete flow</h2>
+          <img src="assets/spingit.png" style="max-height: 80%;" />
         </section>
 
         <section>
-          <h2>Slides</h2>
-          <p>
-            Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-          </p>
-        </section>
-
-        <section>
-          <h2>Point of View</h2>
-          <p>
-            Press <strong>ESC</strong> to enter the slide overview.
-          </p>
-          <p>
-            Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-          </p>
-        </section>
-
-        <section>
-          <h2>Works in Mobile Safari yeah</h2>
-          <p>
-            Try it out! You can swipe through the slides and pinch your way to the overview.
-          </p>
-        </section>
-
-        <section>
-          <h2>Marvelous Unordered List</h2>
+          <h2>Dus</h2>
           <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
+            <li><code style="text-decoration: underline;">features</code> gaan de <code style="text-decoration: underline;">develop</code> branch in voor een volgende release</li>
+            <li><code style="text-decoration: underline;">develop</code> kan altijd naar <code style="text-decoration: underline;">staging</code> omdat hier volledige features in zitten</li>
+            <li>bij akkoord kan <code style="text-decoration: underline;">staging</code> naar de <code style="text-decoration: underline;">master</code> branch (productie)</li>
+            <li>bij een productie release altijd een <code style="text-decoration: underline;">tag</code> (ook na een <code style="text-decoration: underline;">hotfix</code> release)</li>
+          </ul>
+        </section>
+
+        <section data-transition="linear" data-background="#4d7e65" data-background-transition="linear">
+          <img src="assets/pull-request-win.jpg" />
+        </section>
+
+        <section data-transition="linear" data-background-transition="linear">
+          <h2>Remember this?</h2>
+          <img src="assets/wtf-min.png" />
+        </section>
+
+        <section data-transition="fade" data-background="#4d7e65" data-background-transition="fade">
+          <h1>Code review</h1>
+        </section>
+        <!-- <section data-transition="linear" data-background-transition="linear">
+          <img src="assets/code-review.png" />
+          <h2 class="fragment">ahh code review</h2>
+        </section> -->
+
+        <section>
+          <h2>Voordelen</h2>
+          <ul>
+            <li class="fragment">Team is bekend met nieuwe features</li>
+            <li class="fragment">Github PR interface</li>
+            <li class="fragment">Minder duplicate code</li>
+            <li class="fragment">Je leert nieuwe dingen</li>
+            <li class="fragment">"vergeet je niet ..."</li>
+          </ul>
+          <br /><br />
+          <h3 class="fragment"><strike>Nadelen</strike> Nadeel</h3>
+          <ul>
+            <li class="fragment">Kost wat extra tijd</li>
           </ul>
         </section>
 
         <section>
-          <h2>Fantastic Ordered List</h2>
-          <ol>
-            <li>One is smaller than...</li>
-            <li>Two is smaller than...</li>
-            <li>Three!</li>
-          </ol>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Markdown support
-
-            For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-            ```
-            <section data-markdown>
-              ## Markdown support
-
-              For those of you who like that sort of thing.
-              Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-            </section>
-            ```
-          </script>
-        </section>
-
-        <section id="transitions">
-          <h2>Transition Styles</h2>
-          <p>
-            You can select from different transitions, like: <br>
-            <a href="?transition=cube#/transitions">Cube</a> -
-            <a href="?transition=page#/transitions">Page</a> -
-            <a href="?transition=concave#/transitions">Concave</a> -
-            <a href="?transition=zoom#/transitions">Zoom</a> -
-            <a href="?transition=linear#/transitions">Linear</a> -
-            <a href="?transition=fade#/transitions">Fade</a> -
-            <a href="?transition=none#/transitions">None</a> -
-            <a href="?#/transitions">Default</a>
-          </p>
-        </section>
-
-        <section id="themes">
-          <h2>Themes</h2>
-          <p>
-            Reveal.js comes with a few themes built in: <br>
-            <a href="?#/themes">Default</a> -
-            <a href="?theme=sky#/themes">Sky</a> -
-            <a href="?theme=beige#/themes">Beige</a> -
-            <a href="?theme=simple#/themes">Simple</a> -
-            <a href="?theme=serif#/themes">Serif</a> -
-            <a href="?theme=night#/themes">Night</a> <br>
-            <a href="?theme=moon#/themes">Moon</a> -
-            <a href="?theme=solarized#/themes">Solarized</a>
-          </p>
-          <p>
-            <small>
-              * Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-            </small>
-          </p>
+          <h1>best practice</h1>
+          <h2><code style="color: #4d7e65;">+</code> Merge van een <span style="color: #4d7e65;">ander</span></h2>
+          <h2><code style="color: #8c4738;">-</code> maar <span style="color: #8c4738;">niet</span> van <span style="color: #8c4738;">jezelf</span></h2>
         </section>
 
         <section>
-          <h2>Global State</h2>
-          <p>
-            Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-            will be added as a class to the document element when the slide is open. This lets you
-            apply broader style changes, like switching the background.
-          </p>
+          <h2>Hoe werkt het</h2>
+          <p>code, commit en push</p>
+          <img src="assets/pr-button.png" />
         </section>
 
-        <section data-state="customevent">
-          <h2>Custom Events</h2>
-          <p>
-            Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-          </p>
-          <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-  console.log( '"customevent" has fired' );
-});
-          </code></pre>
+        <section data-transition="zoom">
+          <h2>Hoe werkt het</h2>
+          <img src="assets/pr-branch.png" />
+          <img src="assets/pr-go.png" />
         </section>
 
-        <section>
-          <section data-background="#007777">
-            <h2>Slide Backgrounds</h2>
-            <p>
-              Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-            </p>
-            <a href="#" class="image navigate-down">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-            <h2>Image Backgrounds</h2>
-            <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-            <h2>Repeated Image Backgrounds</h2>
-            <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-          </section>
+        <section data-transition="fade">
+          <h2><small>#2</small> <strike>Eenduidige manier van werken</strike> solved</h2>
         </section>
 
-        <section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-          <h2>Background Transitions</h2>
-          <p>
-            Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-          </p>
+        <section data-transition="zoom" data-background="#4d7e65" data-background-transition="linear">
+          <h1>PRO TIPS</h1>
         </section>
 
-        <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-          <h2>Background Transition Override</h2>
-          <p>
-            You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-          </p>
+        <section data-transition="linear" data-background="assets/waldorf-statler.jpg">
+          <div style="background-color: black; opacity: 0.9; border: 3px solid white; padding: 20px 0; margin-top: 43%; border-radius: 10px;">
+            <h2>Zie comments niet als kritiek</h2>
+            <h4>We werken allemaal graag aan en in een mooi product</h4>
+          </div>
+        </section>
+
+        <section data-transition="linear">
+          <h2>Geef elkaar de tijd te reviewen</h2>
+          <img src="assets/knocking.gif" />
+        </section>
+
+        <section data-transition="linear" data-background="assets/cheatsheet.jpg">
+          <h1>Spingit: Cheatsheet</h1>
         </section>
 
         <section>
-          <h2>Clever Quotes</h2>
-          <p>
-            These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-          </p>
-          <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-            reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-          </blockquote>
-        </section>
-
-        <section>
-          <h2>Pretty Code</h2>
-          <pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-          </code></pre>
-          <p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-        </section>
-
-        <section>
-          <h2>Intergalactic Interconnections</h2>
-          <p>
-            You can link between slides internally,
-            <a href="#/2/3">like this</a>.
-          </p>
-        </section>
-
-        <section>
-          <section id="fragments">
-            <h2>Fragmented Views</h2>
-            <p>Hit the next arrow...</p>
-            <p class="fragment">... to step through ...</p>
-            <ol>
-              <li class="fragment"><code>any type</code></li>
-              <li class="fragment"><em>of view</em></li>
-              <li class="fragment"><strong>fragments</strong></li>
-            </ol>
-
-            <aside class="notes">
-              This slide has fragments which are also stepped through in the notes window.
-            </aside>
-          </section>
-          <section>
-            <h2>Fragment Styles</h2>
-            <p>There's a few styles of fragments, like:</p>
-            <p class="fragment grow">grow</p>
-            <p class="fragment shrink">shrink</p>
-            <p class="fragment roll-in">roll-in</p>
-            <p class="fragment fade-out">fade-out</p>
-            <p class="fragment highlight-red">highlight-red</p>
-            <p class="fragment highlight-green">highlight-green</p>
-            <p class="fragment highlight-blue">highlight-blue</p>
-            <p class="fragment current-visible">current-visible</p>
-            <p class="fragment highlight-current-blue">highlight-current-blue</p>
-          </section>
-        </section>
-
-        <section>
-          <h2>Spectacular image!</h2>
-          <a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-            <img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-          </a>
-        </section>
-
-        <section>
-          <h2>Export to PDF</h2>
-          <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-          <iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-          <script>
-            document.getElementById('slideshare').attributeName = 'allowfullscreen';
-          </script>
-        </section>
-
-        <section>
-          <h2>Take a Moment</h2>
-          <p>
-            Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-            during a presentation.
-          </p>
-        </section>
-
-        <section>
-          <h2>Stellar Links</h2>
-          <ul>
-            <li><a href="http://slid.es">Try the online editor</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-            <li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>THE END</h1>
-          <h3>BY Hakim El Hattab / hakim.se</h3>
+          <h1>Questions?</h1>
         </section>
 
       </div>
