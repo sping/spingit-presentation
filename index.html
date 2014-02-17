@@ -41,16 +41,6 @@
           <h2>Workflow</h2>
         </section>
 
-        <section data-transition="fade">
-          <h2>One to rule them all</h2>
-          <h1>gitflow</h1>
-        </section>
-
-        <section data-transition="none">
-          <h2>One to rule them all</h2>
-          <h1>github flow</h1>
-        </section>
-
         <section data-transition="fade" data-background="#4d7e65" data-background-transition="fade">
           <h1>Spin<code>git</code></h1>
           <h3>for wizards on steroids</h3>
@@ -62,8 +52,11 @@
             <li class="fragment">We &hearts; standards, let's have a lot of them</li>
             <li style="opacity:0;">Behoefte aan eenduidigheid</li>
             <li style="opacity:0;">Beide voor en nadelen</li>
-            <li style="opacity:0;">Moet helpen tijdens de ontwikkeling</li>
-            <li style="opacity:0;">Niet forceren het process aan te passen</li>
+            <li style="opacity:0;">
+              Moet helpen tijdens de ontwikkeling<br />
+              Niet forceren het process aan te passen
+            </li>
+            <li style="opacity:0;">Verschillende type software<br /><small>(mobile, web, RingCredible/Jabba)</small></li>
           </ol>
         </section>
 
@@ -73,22 +66,38 @@
             <li><strike>We &hearts; standards, let's have a lot of them</strike></li>
             <li>Behoefte aan eenduidigheid</li>
             <li class="fragment">Beide voor en nadelen</li>
-            <li class="fragment">Moet helpen tijdens de ontwikkeling</li>
-            <li class="fragment">Niet forceren het process aan te passen</li>
+            <li class="fragment">
+              Moet helpen tijdens de ontwikkeling<br />
+              Niet forceren het process aan te passen
+            </li>
+            <li class="fragment">Verschillende type software<br /><small>(mobile, web, RingCredible/Jabba)</small></li>
           </ol>
         </section>
 
         <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-          <h2>Wat zijn de problemen nu?</h2>
+          <h2>Wat zijn de "uitdagingen" nu?</h2>
         </section>
 
         <section>
-          <h2><small>#1</small> Branches</h2>
+          <h2>Waar we het over gaan hebben</h2>
+          <ol style="width: 600px;">
+            <li>Situatie nu</li>
+            <li class="fragment">Voor- nadelen bekeken opties</li>
+            <li class="fragment">Structureren van branches</li>
+            <li class="fragment">But how?</li>
+            <li class="fragment">Uitzonderingen...</li>
+            <li class="fragment">Pull request</li>
+            <li class="fragment">Rebase vs Merge &amp; fast-forward</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2><small>#1</small> Situatie nu</h2>
         </section>
 
         <section>
           <h2>Release branch</h2>
-          <p>Dit staat er op dit moment in <em>productie</em></p>
+          <blockquote>"Wat staat er op dit moment in <u>productie</u>?"</blockquote>
 
           <ul>
             <li><code>master</code></li>
@@ -100,7 +109,7 @@
 
         <section>
           <h2>Develop/sprint branch</h2>
-          <p>Hier zit alles in wat na straks naar <em>productie/staging</em> gaat</p>
+          <blockquote>"Waar zitten alle <u>finished features</u> in voor de volgende release?"</blockquote>
 
           <ul>
             <li><code>master</code></li>
@@ -112,7 +121,7 @@
 
         <section>
           <h2>Feature branches</h2>
-          <p>Nieuwe code die als het af is naar de <em>develop/sprint</em> branch gaat</p>
+          <blockquote>"Waar zitten <u>nieuwe features</u> (klaar of niet) in?"</blockquote>
 
           <ul>
             <li><code>nieuwe-feature</code></li>
@@ -127,57 +136,82 @@
           <h1>WUT</h1>
         </section>
 
+        <section>
+          <h2><small>#2</small> Voor- nadelen bekeken opties</h2>
+        </section>
+
+        <section>
+          <h2>Gitflow vs Github-flow</h2>
+          <ol class="fragments">
+            <li class="fragment"><span style="color: #548195;">gitflow</span></small> Branche structuur</li>
+            <li class="fragment"><span style="color: #548195;">gitflow</span></small> Hotfix flow</li>
+            <li class="fragment"><span style="color: #4d7e65;">github-flow</span></small> Pull Requests/code review</li>
+            <li class="fragment"><span style="color: #548195;">gitflow</span>/<span style="color: #4d7e65;">github-flow</span></small> Taging</li>
+            <li class="fragment"><span style="color: #548195;">gitflow</span>/<span style="color: #4d7e65;">github-flow</span></small> master == productie</li>
+          </ol>
+        </section>
+
         <section data-transition="fade" data-background="#4d7e65" data-background-transition="linear">
-          <h1>Bring in the flows!</h1>
+          <h1>TODO: it's a tie! now what?</h1>
         </section>
 
         <section>
-          <h2>Highlights Gitflow</h2>
-          <ol class="fragments">
-            <li class="fragment">Structuur branches</li>
-            <li class="fragment">Hotfixes</li>
-            <li class="fragment">Taging</li>
+          <h2>Wat missen beide flows</h2>
+          <ol class="fragments" style="width: 620px;">
+            <li class="fragment">acceptatie omgeving?</li>
+            <li class="fragment">version bump/tag Android?</li>
+            <li class="fragment">iOS Ad Hoc taggen/acceptatie omgeving?</li>
           </ol>
         </section>
 
-        <section>
-          <h2>Highlights GitHub flow</h2>
-          <ol class="fragments">
-            <li class="fragment">master = productie</li>
-            <li class="fragment">master is altijd releasebaar</li>
-            <li class="fragment">Pull Requests</li>
-          </ol>
+
+        <section data-transition="zoom">
+          <h2><small>#3</small> Structureren van branches</h2>
         </section>
 
         <section>
           <h2>Start situatie</h2>
-          <p>
+          <p class="fragment">
             <code>master</code><br />
             wat er nu in productie staat
           </p>
-          <p>
+          <p class="fragment">
             <br />
             <code>staging</code><br />
             wat er nu in de acceptatie omgeving staat
           </p>
-          <p>
+          <p class="fragment">
             <br />
             <code>develop</code><br />
             alle afgeronde features voor een volgende release
           </p>
+        </section>
+
+        <section>
+          <h2>Features/hotfixes/tags</h2>
           <p>
-            <br />
             <code>feature/manage-users-for-backend</code><br />
             een nieuwe feature waar aan gewerkt wordt
           </p>
+          <p class="fragment">
+            <br />
+            <code>hotfix/panic-fix</code><br />
+            quick fix die asap live moet
+          </p>
+          <p class="fragment">
+            <br />
+            <code>1.0.1</code><br />
+            tag naamgeving voor een release
+          </p>
+          <p class="fragment">
+            <br />
+            <code>ringcredible/1.0.1</code><br />
+            alternatieve tag naamgeving voor een release
+          </p>
         </section>
 
-        <section data-transition="zoom">
-          <h2><small>#1</small> <strike>Branches</strike> solved</h2>
-        </section>
-
-        <section data-transition="fade">
-          <h2><small>#2</small> Eenduidige manier van werken</h2>
+        <section>
+          <h2><small>#4</small> But how?</h2>
         </section>
 
         <section>
@@ -200,11 +234,11 @@
           <h2>1. feature &rarr; develop</h2>
           <pre><code class="ruby">
 $ git checkout -b feature/admin-login develop
-# work work work, commit commit commit, FINISHED
+# work work work, commit commit commit, rebase op develop, FINISHED
 $ git push origin feature/admin-login
 # create pull request ... ?
           </code></pre>
-          <p class="fragment">we komen zo terug op pull requests</p>
+          <p class="fragment">we komen zo terug op rebasen en pull requests</p>
         </section>
 
         <section>
@@ -253,15 +287,14 @@ $ git checkout -b hotfix/bsod-fix master
 $ git push origin hotfix/bsod-fix
 # pull request
 
-# after merge
-$ git checkout master
-$ git pull origin master
+# after merge, pull and checkout master
 # create new version tag 1.1.1
 $ git tag -a 1.1.1
 $ git push origin 1.1.1
 
 $ git checkout develop
 $ git merge master
+# TODO!!!!
 # repeat above 2 commands for staging
           </code></pre>
         </section>
@@ -279,6 +312,26 @@ $ git merge master
             <li>bij akkoord kan <code style="text-decoration: underline;">staging</code> naar de <code style="text-decoration: underline;">master</code> branch (productie)</li>
             <li>bij een productie release altijd een <code style="text-decoration: underline;">tag</code> (ook na een <code style="text-decoration: underline;">hotfix</code> release)</li>
           </ul>
+        </section>
+
+        <section data-transition="zoom">
+          <h2><small>#5</small> Uitzonderingen</h2>
+        </section>
+
+        <section>
+          <h3><code>try {} catch(Exception) {}</code></h3>
+          <p class="fragment">
+            <u>Acceptatie mobile apps</u><br />
+            Android: <code>staging</code> &rarr; <code>beta</code><br />
+            iOS: <code>staging</code> &rarr; <code>adhoc</code>
+            <blockquote class="fragment">bekijken of dit werkt...</blockquote>
+          </p>
+          <p class="fragment">
+            <br />
+            <u>Meerdere klanten same code base</u><br />
+            Bij een release taggen als<br /><code>&lt;klant&gt;/1.0.1</code><br />
+            <small>voorbeeld: <code>&lt;ringcredible&gt;/1.0.1</code></small>
+          </p>
         </section>
 
         <section data-transition="linear" data-background="#4d7e65" data-background-transition="linear">
@@ -320,7 +373,7 @@ $ git merge master
           <h2><code style="color: #8c4738;">-</code> maar <span style="color: #8c4738;">niet</span> van <span style="color: #8c4738;">jezelf</span></h2>
         </section>
 
-        <section>
+<!--         <section>
           <h2>Hoe werkt het</h2>
           <p>code, commit en push</p>
           <img src="assets/pr-button.png" />
@@ -335,7 +388,7 @@ $ git merge master
         <section data-transition="fade">
           <h2><small>#2</small> <strike>Eenduidige manier van werken</strike> solved</h2>
         </section>
-
+ -->
         <section data-transition="zoom" data-background="#4d7e65" data-background-transition="linear">
           <h1>PRO TIPS</h1>
         </section>
@@ -351,6 +404,95 @@ $ git merge master
           <h2>Geef elkaar de tijd te reviewen</h2>
           <img src="assets/knocking.gif" />
           <h4>Can we ship it? Can we ship it? Can we ship it?</h4>
+        </section>
+
+        <section data-transition="zoom">
+          <h2><small>#6</small> Rebase vs Merge &amp; fast-forward</h2>
+        </section>
+
+        <section data-transition="fade">
+          <h2>Start point</h2>
+          <img src="/assets/git-log-init.png" />
+        </section>
+
+        <section data-transition="fade">
+          <h2>Make it work!</h2>
+           <pre><code class="ruby">
+$ git checkout -b feature/work-by-A develop
+$ git commit -am "10:30 - 1st work by A"
+$ git commit -am "11:00 - 2nd work by A"
+          </code></pre>
+          <pre><code class="ruby">
+$ git checkout -b feature/work-by-B develop
+$ git commit -am "10:45 - 1st work by B"
+$ git commit -am "11:15 - 2nd work by B"
+          </code></pre>
+        </section>
+
+        <section data-transition="none">
+          <h2>Fast forward</h2>
+          <img src="/assets/merge-ff-1.png" />
+          <pre><code class="ruby">
+$ git merge --ff feature/work-by-B
+
+
+          </code></pre>
+        </section>
+
+        <section data-transition="none">
+          <h2>Fast forward</h2>
+          <img src="/assets/merge-ff-2.png" />
+          <pre><code class="ruby">
+$ git merge --ff feature/work-by-B
+$ git merge --ff feature/work-by-A
+# merge conflict
+          </code></pre>
+        </section>
+
+        <section data-transition="none">
+          <h2>Fast forward (first rebase)</h2>
+          <img src="/assets/merge-ff-rebase-1.png" />
+          <pre><code class="ruby">
+# rebase feature/work-by-B from develop
+$ git merge --ff feature/work-by-B
+
+
+          </code></pre>
+        </section>
+
+        <section data-transition="none">
+          <h2>Fast forward (first rebase)</h2>
+          <img src="/assets/merge-ff-rebase-2.png" />
+          <pre><code class="ruby">
+# rebase feature/work-by-B from develop
+$ git merge --ff feature/work-by-B
+# rebase feature/work-by-A from develop
+$ git merge --ff feature/work-by-A
+
+          </code></pre>
+        </section>
+
+        <section data-transition="none">
+          <h2>No Fast forward (with rebase)</h2>
+          <img src="/assets/merge-no-ff-rebase-1.png" />
+          <pre><code class="ruby">
+# rebase feature/work-by-B from develop
+$ git merge --ff feature/work-by-B
+# rebase feature/work-by-A from develop
+$ git merge --ff feature/work-by-A
+
+          </code></pre>
+        </section>
+
+        <section data-transition="none">
+          <h2>No Fast forward (with rebase)</h2>
+          <img src="/assets/merge-no-ff-rebase-2.png" />
+          <pre><code class="ruby">
+# rebase feature/work-by-B from develop
+$ git merge --no-ff feature/work-by-B
+# rebase feature/work-by-A from develop
+$ git merge --no-ff feature/work-by-A
+          </code></pre>
         </section>
 
         <section data-transition="linear" data-background="assets/cheatsheet.jpg">
