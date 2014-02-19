@@ -49,28 +49,13 @@
         <section data-transition="none">
           <h2>Waarom?</h2>
           <ol style="width: 600px;">
-            <li class="fragment">We &hearts; standards, let's have a lot of them</li>
-            <li style="opacity:0;">Behoefte aan eenduidigheid</li>
-            <li style="opacity:0;">Beide voor en nadelen</li>
-            <li style="opacity:0;">
-              Moet helpen tijdens de ontwikkeling<br />
-              Niet forceren het process aan te passen
-            </li>
-            <li style="opacity:0;">Verschillende type software<br /><small>(mobile, web, RingCredible/Jabba)</small></li>
-          </ol>
-        </section>
-
-        <section data-transition="none">
-          <h2>Waarom?</h2>
-          <ol style="width: 600px;">
-            <li><strike>We &hearts; standards, let's have a lot of them</strike></li>
-            <li>Behoefte aan eenduidigheid</li>
+            <li class="fragment">Behoefte aan eenduidigheid</li>
             <li class="fragment">Beide voor en nadelen</li>
             <li class="fragment">
               Moet helpen tijdens de ontwikkeling<br />
               Niet forceren het process aan te passen
             </li>
-            <li class="fragment">Verschillende type software<br /><small>(mobile, web, RingCredible/Jabba)</small></li>
+            <li class="fragment">Verschillende type software<br /><small>(mobile, web)</small></li>
           </ol>
         </section>
 
@@ -151,16 +136,23 @@
           </ol>
         </section>
 
-        <section data-transition="fade" data-background="#4d7e65" data-background-transition="linear">
-          <h1>TODO: it's a tie! now what?</h1>
+        <!--section data-transition="fade" data-background="#4d7e65" data-background-transition="linear"-->
+        <section data-background="assets/Beaker-beaker-16860842-440-248.gif" data-transition="fade">
+          <h1>Now what?</h1>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </section>
 
         <section>
           <h2>Wat missen beide flows</h2>
           <ol class="fragments" style="width: 620px;">
             <li class="fragment">acceptatie omgeving?</li>
-            <li class="fragment">version bump/tag Android?</li>
-            <li class="fragment">iOS Ad Hoc taggen/acceptatie omgeving?</li>
+            <li class="fragment">
+              Mobile apps
+              <ul class="fragments">
+                <li>version bump/tag Android?</li>
+                <li class="fragment">iOS Ad Hoc taggen/acceptatie omgeving?</li>
+              </ul>
+            </li>
           </ol>
         </section>
 
@@ -203,11 +195,6 @@
             <code>1.0.1</code><br />
             tag naamgeving voor een release
           </p>
-          <p class="fragment">
-            <br />
-            <code>ringcredible/1.0.1</code><br />
-            alternatieve tag naamgeving voor een release
-          </p>
         </section>
 
         <section>
@@ -238,7 +225,7 @@ $ git checkout -b feature/admin-login develop
 $ git push origin feature/admin-login
 # create pull request ... ?
           </code></pre>
-          <p class="fragment">we komen zo terug op rebasen en pull requests</p>
+          <p class="fragment">we komen zo terug op pull requests</p>
         </section>
 
         <section>
@@ -251,19 +238,21 @@ $ git push origin feature/admin-login
           <pre><code class="ruby">
 # develop --> staging
 $ git checkout staging
-$ git merge develop
+$ git merge --ff develop
 $ git push origin staging
 # deploy...
           </code></pre>
           <pre><code class="ruby">
 # staging --> master
+$ git checkout -b release/2.1.0 staging
+# version bump, changelog aanpassen, commit.
 $ git checkout master
-$ git merge staging
+$ git merge --no-ff release/2.1.0
 $ git push origin master
 # deploy...
-# create new version tag 1.1
-$ git tag -a 1.1
-$ git push origin 1.1
+# create new version tag 2.1.0
+$ git tag -a 2.1.0
+$ git push origin 2.1.0
           </code></pre>
         </section>
 
@@ -291,12 +280,8 @@ $ git push origin hotfix/bsod-fix
 # create new version tag 1.1.1
 $ git tag -a 1.1.1
 $ git push origin 1.1.1
-
-$ git checkout develop
-$ git merge master
-# TODO!!!!
-# repeat above 2 commands for staging
           </code></pre>
+          <p class="fragment">Hotfix ook naar staging, develop mergen!!!</p>
         </section>
 
         <section>
@@ -419,13 +404,13 @@ $ git merge master
           <h2>Make it work!</h2>
            <pre><code class="ruby">
 $ git checkout -b feature/work-by-A develop
-$ git commit -am "10:30 - 1st work by A"
-$ git commit -am "11:00 - 2nd work by A"
+$ git commit -am "1st work by A"
+$ git commit -am "2nd work by A"
           </code></pre>
           <pre><code class="ruby">
 $ git checkout -b feature/work-by-B develop
-$ git commit -am "10:45 - 1st work by B"
-$ git commit -am "11:15 - 2nd work by B"
+$ git commit -am "1st work by B"
+$ git commit -am "2nd work by B"
           </code></pre>
         </section>
 
@@ -495,6 +480,11 @@ $ git merge --no-ff feature/work-by-A
           </code></pre>
         </section>
 
+        <section data-transition="linear">
+          <h2>Be aware!</h2>
+          <img src="assets/rebase.jpg" />
+        </section>
+
         <section data-transition="linear" data-background="assets/cheatsheet.jpg">
           <h1>Spingit: Cheatsheet</h1>
         </section>
@@ -535,7 +525,7 @@ $ git merge --no-ff feature/work-by-A
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-          //{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
 
