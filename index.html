@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>SpinGIT</title>
+
+    <meta name="description" content="Sping &amp; Git">
+    <meta name="author" content="Manuel van Rijn">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-transition="fade">
+          <h1>git</h1>
+          <h2>Workflow</h2>
+        </section>
+
+        <section data-transition="fade" data-background="#4d7e65" data-background-transition="fade">
+          <h1>Spin<code>git</code></h1>
+          <h3>for wizards on steroids</h3>
+        </section>
+
+        <section data-transition="none">
+          <h2>Waarom?</h2>
+          <ol style="width: 600px;">
+            <li class="fragment">Behoefte aan eenduidigheid</li>
+            <li class="fragment">Beide voor en nadelen</li>
+            <li class="fragment">
+              Moet helpen tijdens de ontwikkeling<br />
+              Niet forceren het process aan te passen
+            </li>
+            <li class="fragment">Verschillende type software<br /><small>(mobile, web)</small></li>
+          </ol>
+        </section>
+
+        <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+          <h2>Wat zijn de "uitdagingen" nu?</h2>
+        </section>
+
+        <section>
+          <h2>Waar we het over gaan hebben</h2>
+          <ol style="width: 600px;">
+            <li>Situatie nu</li>
+            <li class="fragment">Voor- nadelen bekeken opties</li>
+            <li class="fragment">Structureren van branches</li>
+            <li class="fragment">But how?</li>
+            <li class="fragment">Uitzonderingen...</li>
+            <li class="fragment">Pull request</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2><small>#1</small> Situatie nu</h2>
+        </section>
+
+        <section>
+          <h2>Release branch</h2>
+          <blockquote>"Wat staat er op dit moment in <u>productie</u>?"</blockquote>
+
+          <ul>
+            <li><code>master</code></li>
+            <li><code>release</code></li>
+            <li><code>production</code></li>
+            <li>... <code>master</code> van 3 weken terug<br />ofwel commit: <code><a href="#">6a8cd58903</a></code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Develop/sprint branch</h2>
+          <blockquote>"Waar zitten alle <u>finished features</u> in voor de volgende release?"</blockquote>
+
+          <ul>
+            <li><code>master</code></li>
+            <li><code>develop</code></li>
+            <li><code>development_vo</code></li>
+            <li><code>staging</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Feature branches</h2>
+          <blockquote>"Waar zitten <u>nieuwe features</u> (klaar of niet) in?"</blockquote>
+
+          <ul>
+            <li><code>nieuwe-feature</code></li>
+            <li><code>feature/nieuwe-feature</code></li>
+            <li><code>feature<strong><u>s</u></strong>/nieuwe-feature</code></li>
+            <li><code>master</code></li>
+            <li><code>develop</code></li>
+          </ul>
+        </section>
+
+        <section data-transition="zoom" data-background="assets/beaker-muppet2.jpg">
+          <h1>WUT</h1>
+        </section>
+
+        <section>
+          <h2><small>#2</small> Voor- nadelen bekeken opties</h2>
+        </section>
+
+        <section>
+          <h2>Gitflow vs Github-flow</h2>
+          <ol class="fragments">
+            <li class="fragment"><span style="color: #548195;">gitflow</span></small> Branche structuur</li>
+            <li class="fragment"><span style="color: #548195;">gitflow</span></small> Hotfix flow</li>
+            <li class="fragment"><span style="color: #4d7e65;">github-flow</span></small> Pull Requests/code review</li>
+            <li class="fragment"><span style="color: #548195;">gitflow</span>/<span style="color: #4d7e65;">github-flow</span></small> Taging</li>
+            <li class="fragment"><span style="color: #548195;">gitflow</span>/<span style="color: #4d7e65;">github-flow</span></small> master == productie</li>
+          </ol>
+        </section>
+
+        <!--section data-transition="fade" data-background="#4d7e65" data-background-transition="linear"-->
+        <section data-background="assets/Beaker-beaker-16860842-440-248.gif" data-transition="fade">
+          <h1>Now what?</h1>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </section>
+
+        <section>
+          <h2>Wat missen beide flows</h2>
+          <ol class="fragments" style="width: 620px;">
+            <li class="fragment">acceptatie omgeving?</li>
+            <li class="fragment">
+              Mobile apps
+              <ul class="fragments">
+                <li>version bump/tag Android?</li>
+                <li class="fragment">iOS Ad Hoc taggen/acceptatie omgeving?</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+
+        <section data-transition="zoom">
+          <h2><small>#3</small> Structureren van branches</h2>
+        </section>
+
+        <section>
+          <h2>Start situatie</h2>
+          <p class="fragment">
+            <code>master</code><br />
+            wat er nu in productie staat
+          </p>
+          <p class="fragment">
+            <br />
+            <code>staging</code><br />
+            wat er nu in de acceptatie omgeving staat
+          </p>
+          <p class="fragment">
+            <br />
+            <code>develop</code><br />
+            alle afgeronde features voor een volgende release
+          </p>
+        </section>
+
+        <section>
+          <h2>Features/hotfixes/tags</h2>
+          <p>
+            <code>feature/manage-users-for-backend</code><br />
+            een nieuwe feature waar aan gewerkt wordt
+          </p>
+          <p class="fragment">
+            <br />
+            <code>hotfix/panic-fix</code><br />
+            quick fix die asap live moet
+          </p>
+          <p class="fragment">
+            <br />
+            <code>1.0.1</code><br />
+            tag naamgeving voor een release
+          </p>
+        </section>
+
+        <section>
+          <h2><small>#4</small> But how?</h2>
+        </section>
+
+        <section>
+          <h2>Flows</h2>
+          <ol style="min-width: 500px;">
+            <li class="fragment">feature &rarr; develop</li>
+            <li class="fragment">develop &rarr; staging &rarr; master</li>
+            <li class="fragment">hotfix</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>1. feature &rarr; develop</h2>
+          <p>
+            <img src="assets/feature-develop.png" style="max-height: 80%;" />
+          </p>
+        </section>
+
+        <section>
+          <h2>1. feature &rarr; develop</h2>
+          <pre><code class="ruby">
+$ git checkout -b feature/admin-login develop
+# work work work, commit commit commit, rebase op develop, FINISHED
+$ git push origin feature/admin-login
+# create pull request ... ?
+          </code></pre>
+          <p class="fragment">we komen zo terug op pull requests</p>
+        </section>
+
+        <section>
+          <h2>2. develop &rarr; staging &rarr; master</h2>
+          <img src="assets/develop-staging-master.png" />
+        </section>
+
+        <section>
+          <h2>2. develop &rarr; staging &rarr; master</h2>
+          <pre><code class="ruby">
+# develop --> staging
+$ git checkout staging
+$ git merge --ff develop
+$ git push origin staging
+# deploy...
+          </code></pre>
+          <pre><code class="ruby">
+# staging --> master
+$ git checkout -b release/2.1.0 staging
+# version bump, changelog aanpassen, commit.
+$ git checkout master
+$ git merge --no-ff release/2.1.0
+$ git push origin master
+# deploy...
+# create new version tag 2.1.0
+$ git tag -a 2.1.0
+$ git push origin 2.1.0
+          </code></pre>
+        </section>
+
+        <section data-transition="linear" data-background-transition="slide" data-background="#8c4738">
+          <h1>paniek!</h1>
+          <h2>hotfix nodig voor productie!</h2>
+          <img src="assets/Startrek-BSoD.gif" />
+        </section>
+
+        <section>
+          <h2>3. Hotfix flow</h2>
+          <img src="assets/hotfix.png" style="max-height: 80%;" />
+        </section>
+
+        <section>
+          <h2>3. Hotfix flow</h2>
+          <pre><code class="ruby">
+# create hotfix branch from master
+$ git checkout -b hotfix/bsod-fix master
+# fix, fix, commit, commit
+$ git push origin hotfix/bsod-fix
+# pull request
+
+# after merge, pull and checkout master
+# create new version tag 1.1.1
+$ git tag -a 1.1.1
+$ git push origin 1.1.1
+          </code></pre>
+          <p class="fragment">Hotfix ook naar staging, develop mergen!!!</p>
+        </section>
+
+        <section>
+          <h2>Complete flow</h2>
+          <img src="assets/spingit.png" style="max-height: 80%;" />
+        </section>
+
+        <section>
+          <h2>Dus</h2>
+          <ul>
+            <li><code style="text-decoration: underline;">features</code> gaan de <code style="text-decoration: underline;">develop</code> branch in voor een volgende release</li>
+            <li><code style="text-decoration: underline;">develop</code> kan altijd naar <code style="text-decoration: underline;">staging</code> omdat hier volledige features in zitten</li>
+            <li>bij akkoord kan <code style="text-decoration: underline;">staging</code> naar de <code style="text-decoration: underline;">master</code> branch (productie)</li>
+            <li>bij een productie release altijd een <code style="text-decoration: underline;">tag</code> (ook na een <code style="text-decoration: underline;">hotfix</code> release)</li>
+          </ul>
+        </section>
+
+        <section data-transition="zoom">
+          <h2><small>#5</small> Uitzonderingen</h2>
+        </section>
+
+        <section>
+          <h3><code>try {} catch(Exception) {}</code></h3>
+          <p class="fragment">
+            <u>Acceptatie mobile apps</u><br />
+            Android: <code>staging</code> &rarr; <code>beta</code><br />
+            iOS: <code>staging</code> &rarr; <code>adhoc</code>
+            <blockquote class="fragment">bekijken of dit werkt...</blockquote>
+          </p>
+          <p class="fragment">
+            <br />
+            <u>Meerdere klanten same code base</u><br />
+            Bij een release taggen als<br /><code>&lt;klant&gt;/1.0.1</code><br />
+            <small>voorbeeld: <code>&lt;sping&gt;/1.0.1</code></small>
+          </p>
+        </section>
+
+        <section data-transition="linear" data-background="#4d7e65" data-background-transition="linear">
+          <img src="assets/pull-request-win.jpg" />
+        </section>
+
+        <section data-transition="linear" data-background-transition="linear">
+          <h2>Remember this?</h2>
+          <img src="assets/wtf-min.png" />
+        </section>
+
+        <section data-transition="fade" data-background="#4d7e65" data-background-transition="fade">
+          <h1>Code review</h1>
+        </section>
+
+        <section>
+          <h2>Voordelen</h2>
+          <ul>
+            <li class="fragment">Team is technisch bekend met nieuwe features</li>
+            <li class="fragment">Github PR interface</li>
+            <li class="fragment">Minder duplicate code</li>
+            <li class="fragment">Je leert nieuwe dingen</li>
+            <li class="fragment">"vergeet je niet ..."</li>
+          </ul>
+          <br /><br />
+          <h3 class="fragment"><strike>Nadelen</strike> Nadeel</h3>
+          <ul>
+            <li class="fragment">Kost wat extra tijd</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>best practice</h1>
+          <h2><code style="color: #4d7e65;">+</code> Merge van een <span style="color: #4d7e65;">ander</span></h2>
+          <h2><code style="color: #8c4738;">-</code> maar <span style="color: #8c4738;">niet</span> van <span style="color: #8c4738;">jezelf</span></h2>
+        </section>
+
+        <section data-transition="zoom" data-background="#4d7e65" data-background-transition="linear">
+          <h1>PRO TIPS</h1>
+        </section>
+
+        <section data-transition="linear" data-background="assets/waldorf-statler.jpg">
+          <div style="background-color: black; opacity: 0.9; border: 3px solid white; padding: 20px 0; margin-top: 43%; border-radius: 10px;">
+            <h2>Zie comments niet als kritiek</h2>
+            <h4>We werken allemaal graag aan en in een mooi product</h4>
+          </div>
+        </section>
+
+        <section data-transition="linear">
+          <h2>Geef elkaar de tijd te reviewen</h2>
+          <img src="assets/knocking.gif" />
+          <h4>Can we ship it? Can we ship it? Can we ship it?</h4>
+        </section>
+
+        <section data-transition="linear">
+          <h1>Spingit: Cheatsheet</h1>
+          <img src="cheatsheet/spingflow-v3.jpg" />
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: 'default',
+        transition: 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-2.jpg',
+        //parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
