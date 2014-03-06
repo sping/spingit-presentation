@@ -72,7 +72,6 @@
             <li class="fragment">But how?</li>
             <li class="fragment">Uitzonderingen...</li>
             <li class="fragment">Pull request</li>
-            <li class="fragment">Rebase vs Merge &amp; fast-forward</li>
           </ol>
         </section>
 
@@ -315,7 +314,7 @@ $ git push origin 1.1.1
             <br />
             <u>Meerdere klanten same code base</u><br />
             Bij een release taggen als<br /><code>&lt;klant&gt;/1.0.1</code><br />
-            <small>voorbeeld: <code>&lt;ringcredible&gt;/1.0.1</code></small>
+            <small>voorbeeld: <code>&lt;sping&gt;/1.0.1</code></small>
           </p>
         </section>
 
@@ -331,10 +330,6 @@ $ git push origin 1.1.1
         <section data-transition="fade" data-background="#4d7e65" data-background-transition="fade">
           <h1>Code review</h1>
         </section>
-        <!-- <section data-transition="linear" data-background-transition="linear">
-          <img src="assets/code-review.png" />
-          <h2 class="fragment">ahh code review</h2>
-        </section> -->
 
         <section>
           <h2>Voordelen</h2>
@@ -358,22 +353,6 @@ $ git push origin 1.1.1
           <h2><code style="color: #8c4738;">-</code> maar <span style="color: #8c4738;">niet</span> van <span style="color: #8c4738;">jezelf</span></h2>
         </section>
 
-<!--         <section>
-          <h2>Hoe werkt het</h2>
-          <p>code, commit en push</p>
-          <img src="assets/pr-button.png" />
-        </section>
-
-        <section data-transition="zoom">
-          <h2>Hoe werkt het</h2>
-          <img src="assets/pr-branch.png" />
-          <img src="assets/pr-go.png" />
-        </section>
-
-        <section data-transition="fade">
-          <h2><small>#2</small> <strike>Eenduidige manier van werken</strike> solved</h2>
-        </section>
- -->
         <section data-transition="zoom" data-background="#4d7e65" data-background-transition="linear">
           <h1>PRO TIPS</h1>
         </section>
@@ -389,100 +368,6 @@ $ git push origin 1.1.1
           <h2>Geef elkaar de tijd te reviewen</h2>
           <img src="assets/knocking.gif" />
           <h4>Can we ship it? Can we ship it? Can we ship it?</h4>
-        </section>
-
-        <section data-transition="zoom">
-          <h2><small>#6</small> Rebase vs Merge &amp; fast-forward</h2>
-        </section>
-
-        <section data-transition="fade">
-          <h2>Start point</h2>
-          <img src="/assets/git-log-init.png" />
-        </section>
-
-        <section data-transition="fade">
-          <h2>Make it work!</h2>
-           <pre><code class="ruby">
-$ git checkout -b feature/work-by-A develop
-$ git commit -am "1st work by A"
-$ git commit -am "2nd work by A"
-          </code></pre>
-          <pre><code class="ruby">
-$ git checkout -b feature/work-by-B develop
-$ git commit -am "1st work by B"
-$ git commit -am "2nd work by B"
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>Fast forward</h2>
-          <img src="/assets/merge-ff-1.png" />
-          <pre><code class="ruby">
-$ git merge --ff feature/work-by-B
-
-
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>Fast forward</h2>
-          <img src="/assets/merge-ff-2.png" />
-          <pre><code class="ruby">
-$ git merge --ff feature/work-by-B
-$ git merge --ff feature/work-by-A
-# merge conflict
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>Fast forward (first rebase)</h2>
-          <img src="/assets/merge-ff-rebase-1.png" />
-          <pre><code class="ruby">
-# rebase feature/work-by-B from develop
-$ git merge --ff feature/work-by-B
-
-
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>Fast forward (first rebase)</h2>
-          <img src="/assets/merge-ff-rebase-2.png" />
-          <pre><code class="ruby">
-# rebase feature/work-by-B from develop
-$ git merge --ff feature/work-by-B
-# rebase feature/work-by-A from develop
-$ git merge --ff feature/work-by-A
-
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>No Fast forward (with rebase)</h2>
-          <img src="/assets/merge-no-ff-rebase-1.png" />
-          <pre><code class="ruby">
-# rebase feature/work-by-B from develop
-$ git merge --ff feature/work-by-B
-# rebase feature/work-by-A from develop
-$ git merge --ff feature/work-by-A
-
-          </code></pre>
-        </section>
-
-        <section data-transition="none">
-          <h2>No Fast forward (with rebase)</h2>
-          <img src="/assets/merge-no-ff-rebase-2.png" />
-          <pre><code class="ruby">
-# rebase feature/work-by-B from develop
-$ git merge --no-ff feature/work-by-B
-# rebase feature/work-by-A from develop
-$ git merge --no-ff feature/work-by-A
-          </code></pre>
-        </section>
-
-        <section data-transition="linear">
-          <h2>Be aware!</h2>
-          <img src="assets/rebase.jpg" />
         </section>
 
         <section data-transition="linear">
@@ -525,8 +410,7 @@ $ git merge --no-ff feature/work-by-A
           //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
 
